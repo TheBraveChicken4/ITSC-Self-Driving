@@ -2,14 +2,12 @@
 # This will be a baseline docker to flash onto the AgileX LIMO robot at the beginning of each course
 # 
 
-FROM scratch
-
-RUN pip install ros2
+FROM osrf/ros:humble-desktop-full
 
 # ALL ACORDING TO ROS2 OFFICIAL WEBSITE INSTSALLATION
 #           V ROS2 Humble Hawksbill (Recommended Ubuntu 22.04)
 
-# Set Locale
+# RUN Set Locale
 RUN locale  # check for UTF-8
 
 RUN sudo apt update && sudo apt install locales
