@@ -38,3 +38,7 @@ RUN sudo apt install ros-humble-desktop
 # Possible values are: setup.bash, setup.sh, setup.zsh
 RUN source /opt/ros/humble/setup.bash
 
+
+###################################
+# THIS CURRENTLY DOES NOT COMPILE #
+###################################
