@@ -4,7 +4,14 @@
 
 FROM osrf/ros:humble-desktop-full
 
-RUN sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros2-humble-turtlebot3*
+RUN apt-get update
+RUN apt-get -y upgrade
+
+RUN sudo apt-get -y install ros-humble-navigation2
+RUN apt-get update 
+RUN sudo apt-get -y install ros-humble-nav2-bringup 
+RUN apt-get update
+RUN sudo apt-get -y install ros-humble-turtlebot3* 
 
 RUN export TURTLEBOT3_MODEL=waffle
 
