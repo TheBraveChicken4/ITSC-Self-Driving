@@ -14,6 +14,7 @@ This project contains a docker file that is built to set up and build dependenci
 - This should build the image correctly and you should see it in the desktop under the images tab
     - This guide was tested on:
 
+**
         macOS Catalina 10.15.4
         docker desktop 2.2.0.5 (43884) - stable release
         XQuartz 2.7.11 (xorg-server 1.18.4)
@@ -25,5 +26,5 @@ This project contains a docker file that is built to set up and build dependenci
         docker desktop 4.15.0 (93002)
         XQuartz 2.8.4
         Mac Studio (M1)
-
+**
 
