@@ -37,3 +37,7 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 
 
 # Build the ROS2 Talker and Listener Node
+- After you have fully set up the docker container, you are ready to begin development
+- In ROS2 Humble, we always need to make sure that ROS2 is correctly sourced. You can type and run the command `ros2` and you should see a list of commands. If you do not, type `source /opt/ros/humble/setup.bash` and try again!
+- In ROS2, packages are container within a folder called your workspace. It is good practice to include **_ws** at the end of your folder name. For example, your workspace might be named **ros_ws**
+- Simple create a workspace folder using the linux command `mkdir`. name is **ros2_ws** for now. Inside 
