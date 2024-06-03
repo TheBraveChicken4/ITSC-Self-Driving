@@ -36,8 +36,12 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - Now you should be able to open windows through your docker container. You can test this by running a container and typing `gedit` (Ensure gedit is installed)
 
 
-# Build the ROS2 Talker and Listener Node
+# Build the ROS2 Workspace
 - After you have fully set up the docker container, you are ready to begin development
-- In ROS2 Humble, we always need to make sure that ROS2 is correctly sourced. You can type and run the command `ros2` and you should see a list of commands. If you do not, type `source /opt/ros/humble/setup.bash` and try again!
-- In ROS2, packages are container within a folder called your workspace. It is good practice to include **_ws** at the end of your folder name. For example, your workspace might be named **ros_ws**
-- Simple create a workspace folder using the linux command `mkdir`. name is **ros2_ws** for now. Inside 
+- In ROS2 Humble, we always need to make sure that ROS2 is correctly sourced. You can type and run the command `ros2` and you should see a list of commands. If you do not, type `source /opt/ros/humble/setup.bash` and try again
+- In ROS2, packages are container within a folder called your workspace. It is good practice to include ***'_ws'***  at the end of your folder name. For example, your workspace might be named ***'ros_ws'***
+- Simple create a workspace folder using the linux command `mkdir`. Name it ***'ros2_ws'*** for now. Navigate inside of your workspace using `cd ros2_ws`, and create another folder using the same command named ***'src'*** to store your code files
+- Next, run the command `colcon build`. This essentially sets up all the necessary dependencies builds your workspace. You should now see three more folders in your workspace. `build`, `install`, and `log`
+- You can enable colcon autocomplete by running the command, `source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash`
+- To be able to use your custom ros2 nodes, you need to source your project. You can do this by navigating back to your home directory and typing `source ~/ros2_ws/install/setup.bash`
+
