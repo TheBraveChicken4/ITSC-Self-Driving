@@ -5,6 +5,7 @@
 # Start the docker with a pre-made baseline for ROS2 humble development
 FROM osrf/ros:humble-desktop-full
 
+# Upgrade and update the terminal
 RUN apt-get update
 RUN apt-get -y upgrade
 

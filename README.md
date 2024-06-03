@@ -1,3 +1,6 @@
-# LimoDocker
-This will contain a dockerfile that is generalizable for the AgileX LIMO robots.
-So far the docker should work, but it is not finished. 
+# Docker
+This project contains a docker file that is built to set up and build dependencies necessary for creating and running ros nodes.
+# ADD INSTRUCTIONS
+- ...
+- ...
+- ...
