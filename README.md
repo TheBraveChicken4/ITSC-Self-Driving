@@ -5,8 +5,8 @@ This project contains a docker file that is built to set up and build dependenci
 - Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/LimoDocker/main/Dockerfile` and press enter
 - This should build the image correctly and you should see it in the desktop under the images tab
 - Next, run the docker image by typing `docker run --name lab0_container -e DISPLAY=host.docker.internal:0.0 -it lab0_image`
+You should now see a linux terminal where "the line " (FIX) says root@ and a combination of some numbers and letters
 - Start XLaunch and change **Display Number** to 0. Then press enter until the start window closes.
-- You should now see a linux terminal where "the line " (FIX) says root@ and a combination of some numbers and letters
 - This means you have correctly launched your docker container and you can move on to the next step
 
 ## Instructions to get docker set up on Mac
@@ -41,7 +41,13 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - In ROS2 Humble, we always need to make sure that ROS2 is correctly sourced. You can type and run the command `ros2` and you should see a list of commands. If you do not, type `source /opt/ros/humble/setup.bash` and try again
 - In ROS2, packages are container within a folder called your workspace. It is good practice to include ***'_ws'***  at the end of your folder name. For example, your workspace might be named ***'ros_ws'***
 - Simple create a workspace folder using the linux command `mkdir`. Name it ***'ros2_ws'*** for now. Navigate inside of your workspace using `cd ros2_ws`, and create another folder using the same command named ***'src'*** to store your code files
-- Next, run the command `colcon build`. This essentially sets up all the necessary dependencies builds your workspace. You should now see three more folders in your workspace. `build`, `install`, and `log`
+- Next, run the command `colcon build`. This essentially sets up all the necessary dependencies builds your workspace. You should now see three more folders in your workspace. `build`, `install`, and `log` by running the linux command `ls`
+- Navigate back your home directory by typing `cd ..`
 - You can enable colcon autocomplete by running the command, `source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash`
-- To be able to use your custom ros2 nodes, you need to source your project. You can do this by navigating back to your home directory and typing `source ~/ros2_ws/install/setup.bash`
+- To be able to use your custom ros2 nodes, you need to source your project. You can do this by typing `source ~/ros2_ws/install/setup.bash`
+
+# Build ROS2 Packages and Nodes
+- Contain intro about packages
+- The first step in creating your first ROS2 package is to navigate to the src folder within your workspace. (Maybe they should practice by now changing directories and using linux commands)
+- Once you are in the src folder within your workspace, you can use the special ROS2 command to build a package. Type `ros2 pkg create PACKAGE_NAME` and replace PACKAGE_NAME with the name of your package. In this case we can name it talker_listener_demo.
 
