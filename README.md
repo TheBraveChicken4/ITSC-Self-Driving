@@ -129,5 +129,5 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 
 # Publishers and Subscribers
 - This next part may be too advanced for Lab0 but to change our node to be a publisher, and make a new one that is a subscriber that can listen to what the publisher publishes, we need to learn about ***Topics***.
-- You can think of topics like a bus system for nodes to communicate. If we need to send a message from one node to another we can accomplish this with the use of topics. This page is a good resource(https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) even though it is a different ROS distro, topics remain similar, if not the same.
+- You can think of topics like a bus system for nodes to communicate. If we need to send a message from one node to another we can accomplish this with the use of topics. This page is a good [resource](https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) even though it is a different ROS distro, topics remain similar, if not the same.
 
