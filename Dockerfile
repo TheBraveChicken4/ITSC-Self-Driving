@@ -3,9 +3,6 @@
 #   students create their own "talker" and "listener" nodes in ROS2 Humble
 
 
-# FIX XLAUNCH
-
-
 # Start the docker with a pre-made baseline for ROS2 humble development
 FROM osrf/ros:humble-desktop-full
 
@@ -26,3 +23,4 @@ RUN sudo apt-get install python3-colcon-common-extensions -y
 
 
 
+### Make a bash file and make the docker much easier to work with
