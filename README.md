@@ -131,3 +131,85 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - This next part may be too advanced for Lab0 but to change our node to be a publisher, and make a new one that is a subscriber that can listen to what the publisher publishes, we need to learn about ***Topics***.
 - You can think of topics like a bus system for nodes to communicate. If we need to send a message from one node to another we can accomplish this with the use of topics. This page is a good [resource](https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) even though it is a different ROS distro, topics remain similar, if not the same.
 
+- With only a few extra lines of code in our talker node, we can make it publish to a topic!
+```
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MyTalkerNode(Node):
+    def __init__(self):
+        super().__init__('my_talker')
+        self.talker_publisher = self.create_publisher(String, 'my_topic', 10)
+        self.create_timer(1, self.timer_callback)
+        self.i = 0
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = f"Hello ROS2! {self.i}"
+        self.talker_publisher.publish(msg)
+        self.get_logger().info('Publishing "%s"' % msg.data)
+        self.i += 1
+
+
+
+def main(args=None):
+    rclpy.init(args=args)
+
+    node = MyTalkerNode()   
+
+    rclpy.spin(node)
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
+```
+
+- ***Make sure to properly build the project before running it***
+
+- Before we continue, we can add another file in the same directory of our package called `my_listener.py`
+- This is the same idea as before, but we want to be able to run this node, and see the output from our talker node
+- The inside of this file should look something like this:
+
+```
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MyListenerNode(Node):
+    def __init__(self):
+        super().__init__('my_listener')
+        self.subscription = self.create_subscription(
+            String, 
+            'my_topic', 
+            self.listener_callback, 
+            10
+        )
+        self.subscription
+        
+    def listener_callback(self, msg):
+        self.get_logger().info('I heard: "%s"' % msg.data)
+
+
+def main(args=None):
+    rclpy.init(args=args)
+
+    node = MyListenerNode()
+
+    rclpy.spin(node)
+
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+- Before we continue to building the project ***Make sure you correctly add the contents for the listener node within the setup.py file, exactly where we did it for the talker***
+- Now go back to the root of your workspace and rebuild the project! (You may need to close and reopen the docker container)
+- After that, open a new docker container in a new window and source your project in both windows (make sure ROS2 is correctly sourced as well)
+- Try running `ros2 run talker_listener_demo talker_node` in one terminal, and `ros2 run talker_listener_demo listener_node` in another
+- If everything is working properly you should see the output from the talker in the terminal that you ran the listener. 
+
