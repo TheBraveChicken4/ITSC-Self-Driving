@@ -2,7 +2,7 @@
 This project contains a docker file that is built to set up and build dependencies necessary for creating and running ros nodes.
 ## Instructions to get docker set up on Windows
 - First, open Docker Desktop and open a command line interface
-- Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/LimoDocker/main/Dockerfile` and press enter
+- Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/LimoDocker/main/Dockerfile` and press enter in the command line
 - This should build the image correctly and you should see it in the desktop under the images tab
 - Next, run the docker image by typing `docker run --name lab0_container -e DISPLAY=host.docker.internal:0.0 -it lab0_image`
 You should now see a linux terminal where "the line " (FIX) says root@ and a combination of some numbers and letters
@@ -40,7 +40,7 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - After you have fully set up the docker container, you are ready to begin development
 - In ROS2 Humble, we always need to make sure that ROS2 is correctly sourced. You can type and run the command `ros2` and you should see a list of commands. If you do not, type `source /opt/ros/humble/setup.bash` and try again
 - In ROS2, packages are container within a folder called your workspace. It is good practice to include ***'_ws'***  at the end of your folder name. For example, your workspace might be named ***'ros_ws'***
-- Simple create a workspace folder using the linux command `mkdir`. Name it ***'ros2_ws'*** for now. Navigate inside of your workspace using `cd ros2_ws`, and create another folder using the same command named ***'src'*** to store your code files
+- Simply create a workspace folder using the linux command `mkdir`. Name it ***'ros2_ws'*** for now. Navigate inside of your workspace using `cd ros2_ws`, and create another folder using the same command named ***'src'*** to store your code files
 - Next, run the command `colcon build`. Colcon is the build tool that essentially sets up all the necessary dependencies builds your workspace. You should now see three more folders in your workspace. `build`, `install`, and `log` by running the linux command `ls`
 - Navigate back your home directory by typing `cd ..`
 - You can enable colcon autocomplete by running the command, `source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash`
@@ -50,13 +50,13 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - Contain intro about packages
 - The first step in creating your first ROS2 package is to navigate to the src folder within your workspace. (Maybe they should practice by now changing directories and using linux commands)
 - Once you are in the src folder within your workspace, you can use the special ROS2 command to build a package. Type `ros2 pkg create PACKAGE_NAME --build-type ament_python --dependencies rclpy` and replace PACKAGE_NAME with the name of your package. In this case we can name it ***'talker_listener_demo'***
-    - ***ros2 pkg create*** is the ROS2 command that we are using to create a package
-    - ***PACKAGE_NAME*** is the name you want to give your package
-    - ***--build-type ament_python*** is a flag that specifies that we want to write python code within this package
-    - ***--dependencies rclpy*** is a flag that specifies other dependencies for this package. In this case it is the python library to write ros code, **rclpy** 
+   > - ***ros2 pkg create*** is the ROS2 command that we are using to create a package
+   > - ***PACKAGE_NAME*** is the name you want to give your package
+   > - ***--build-type ament_python*** is a flag that specifies that we want to write python code within this package
+   > - ***--dependencies rclpy*** is a flag that specifies other dependencies for this package. In this case it is the python library to write ros code, **rclpy** 
 - Each package will be one subset of your application and can contain many nodes, each specific to the purpose of the package
 
-- At this point you can open up Visual Studio Code and click on your docker extension. You should see your container under the containers tab
+- At this point you can open up Visual Studio Code and click on your docker extension. You should see your container under the containers tab. Click it
 - Navigate to ros2_ws, src, then talker_listener_demo and explore the ros2 package that has been created
     - The first file is called `package.xml`. This file will be in every ros2 package and it contains the name of the package, version number and author information
         - You can also see the `<depend>` tag that contains dependencies. rclpy should be visible
@@ -64,11 +64,65 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
     - You will see `setup.py`. This is similar to `package.xml`, but we can actually specify where we have our ros2 nodes installed. We will come back to this later
     - Lastly you will see a `test` folder, a `resource` folder, and a folder that is the same name as your package
         - Inside the folder that has the same name as the package is where we will put our nodes
-- After you familiarize yourself with your package, navigate back to your workspace (`cd ..`) and use colcon to build the workspace
+- After you familiarize yourself with your package, navigate back to your workspace through the command line (`cd ..`) and use colcon to build the workspace
 - Everything should now be set up correctly to build our nodes!
 
     > **For your understanding**: If you navigate to the install directory of your workspace, you should see a folder that has the name of your package. When we use colcon build, it takes all the nodes and everything that you want to install from your package, and it will put it inside the install folder. From there, you will be enabled to use ros2 command line tools such as `ros2 run` and `ros2 launch` to control your custom nodes and files.
 
 
-# Build the Nodes
+# Build the Node
+- In ROS2, a node is an executable that uses the ROS 2 client libraries to communicate with other nodes through messages passed over topics, services, or actions. It is essentially a program that sends and recieves messages between parts of a ROS2 project
+- To build your own node, start by navigating to the folder which name is the same as the package name, within the package you already created
+    - The only present in this folder should be `__init__.py`
+- Using a linux command (SPECIFY OR NOT? FOR LEARNING PURPOSES), create a new python file within this folder called `my_talker.py`
+
+
+~~- POSSIBLE NEED TO RUN `chmod +x my_talker.py` TO MAKE IT EXECUTABLE (I don't yet know if this is necessary). It should now be green~~- Unnecessary
+
+
+- After that, go back to the source folder of your workspace, and then open visual studio code
+- Find the new python file that you just created and open it
+
+    > At this point it is optional if you would like to install the visual studio ROS extention to aid in ROS2 development. If you would like to, click the extensions tab and search for ***"ROS"*** and install the one at the top that is verified by Microsoft
+
+- At the top of the file we need to make sure that we `import rclpy` if we want to use it to create a ROS2 node with python
+- The next step is to create a `main` function with one parameter `args` that has a default value of `None`. Next create a condition checking `if __name__ == '__main__'`. If it is true, call the main function. 
+    - This is helpful for when we want to directly execute the file from the terminal
+- The first thing to do in the main function is to initialize ROS2 communications. To do this, we need to call the `init` method from the package `rclpy` and pass `(args=args)`. This will be the first line in your main function, and `rclpy.shutdown()` will be the last
+
+- The best practice for creating nodes in ROS2 is by using Object Oriented Programming. To begin, import `Node` from `rclpy.node` and create a new class called MyNode that inherits from the class `Node`
+- Within your new node class, create an `__init__` method that has `self` as a parameter. Inside of this method, call the parent class's `__init__` method and pass a string for the name of your node. In our case, pass ***"talker_node"***
+- By doing this, we have achieved the minimum we need to do to create a node
+- To make make the node log to the terminal, underneath the `super().__init__()` call, write the line, `self.get_logger().info("Hello, ROS2!")`
+- After that, we need to initialize our node within the main function. Between `rclpy.init()` and `rclpy.shutdown()`, initialize a new variable called node and create an instance our `MyNode()`. Lastly make sure to save your file
+
+
+# Run the Node
+- After saving your file, open up the terminal again and navigate to the folder inside your package where your python file is located
+- run the command `python3 FILE_NAME` where ***'FILE_NAME'*** is the name of your file.
+- You should now see a message from the logger in the terminal that contains your message. Congratulations! You just ran your first custom ROS2 node
+
+
+# Make it Cooler
+- Once you have successfully run your ROS2 node, you may have noticed that it stops right after you run it. To change it and make the node never stop until you kill it with Ctrl+C, open Visual Studio Code back up
+- Update your `main()` function to contain the line: `rclpy.spin(node)` after you create your node so that it does not stop running. Make sure to save your file
+- Next, we want to be able to run our node with a ROS2 command
+- In Visual Studio Code, open `setup.py` and find the `entry_points=` argument
+- You should see a line containing `'console_scripts': []`. Within these brackets is where we are going to make our ROS2 executable
+- Inside of the brackets, we want to write our executable like this: `"EXEC_NAME = PKG_NAME.PYTHON_FILE:main"`
+    - `EXEC_NAME` is the name we want to give our executable. In this case we can call it `talker_node`
+    - `PKG_NAME` is the name of our package. In this case that would be `talker_listener_demo`
+    - `PYTHON_FILE` is the name of our python file. In this case that would be `my_talker` (Hint: we can omit the file extension here)
+    - `:main` is the name of the function within our file we want to run
+- Make sure to save your file, and then you can go back to the terminal and navigate back to the root of our workspace ***/ros2_ws***
+- Run `colcon build`
+***IMPORTANT*** - In order to use new functionalities that you have created, you need to source your workspace again: `source install/setup.bash`
+- Once you have sourced your package agian, we can use ROS2 to start our node. In the terminal, type `ros2 run PKG_NAME EXEC_NAME` and you should see the same output as before
+    > There is a difference between the name of the node, the name of your python file, and the name of the executable that you created. This can become difficult to keep track of but you can name them all the same for future projects
+
+# Create a callback
+- You may notice that when we run the node, even though it doesn't kill until we kill it, the node does not do anything more than log one line. To fix this we can create a timer callback.
+- Open your file back up in Visual Studio code and create a new method in the within your node class called `timer_callback()`. Move the line that logs the message to the terminal into this new method
+- Within the `__init__()` method inside of your node class, add a line to call the `self.create_timer()` method. This method takes two positional arguments that we care about. The first is a float number for the amount of seconds to wait between each call. The second is the callback that you want to run after each iteration. For this example, call the method so that it prints what it was printing before, one second apart, infinitely.
+- Make sure to correctly build and source your package before you run your node again
 
