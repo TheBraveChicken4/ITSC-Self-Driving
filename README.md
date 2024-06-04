@@ -67,7 +67,7 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - After you familiarize yourself with your package, navigate back to your workspace (`cd ..`) and use colcon to build the workspace
 - Everything should now be set up correctly to build our nodes!
 
-    > For your understanding: If you navigate to the install directory of your workspace, you should see a folder that has the name of your package. When we use colcon build, it takes all the nodes and everything that you want to install from your package, and it will put it inside the install folder. From there, you will be enabled to use ros2 command line tools such as `ros2 run` and `ros2 launch` to control your custom nodes and files.
+    > **For your understanding**: If you navigate to the install directory of your workspace, you should see a folder that has the name of your package. When we use colcon build, it takes all the nodes and everything that you want to install from your package, and it will put it inside the install folder. From there, you will be enabled to use ros2 command line tools such as `ros2 run` and `ros2 launch` to control your custom nodes and files.
 
 
 # Build the Nodes
