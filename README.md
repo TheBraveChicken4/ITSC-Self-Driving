@@ -125,4 +125,9 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - Open your file back up in Visual Studio code and create a new method in the within your node class called `timer_callback()`. Move the line that logs the message to the terminal into this new method
 - Within the `__init__()` method inside of your node class, add a line to call the `self.create_timer()` method. This method takes two positional arguments that we care about. The first is a float number for the amount of seconds to wait between each call. The second is the callback that you want to run after each iteration. For this example, call the method so that it prints what it was printing before, one second apart, infinitely.
 - Make sure to correctly build and source your package before you run your node again
+- When you run your node now you should see a continuous stream of messages being printed
+
+# Publishers and Subscribers
+- This next part may be too advanced for Lab0 but to change our node to be a publisher, and make a new one that is a subscriber that can listen to what the publisher publishes, we need to learn about ***Topics***.
+- You can think of topics like a bus system for nodes to communicate. If we need to send a message from one node to another we can accomplish this with the use of topics. This page is a good resource(https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html) even though it is a different ROS distro, topics remain similar, if not the same.
 
