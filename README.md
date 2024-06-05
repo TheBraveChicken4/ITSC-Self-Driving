@@ -213,3 +213,12 @@ if __name__ == '__main__':
 - Try running `ros2 run talker_listener_demo talker_node` in one terminal, and `ros2 run talker_listener_demo listener_node` in another
 - If everything is working properly, you should see the output from the talker in the terminal that you ran the listener
 
+
+
+# **Helpful Tip**
+
+If you would like to be able to source ROS2 every time you start your container, you can do so by editing the bashrc file.
+- Go to the root of your container (You will automatically be put there when you start your container)
+- Type `gedit ~/.bashrc` and scroll all the way to the bottom of the file.
+- Without changing any of the lines that are already there, press enter a few times to be on a new line at the very bottom of the file.
+- Add the line `source /opt/ros/humble/setup.bash` and press save.
