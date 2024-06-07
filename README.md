@@ -75,17 +75,12 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - To build your node, start by navigating to the folder whose name is the same as the package name, within the package you already created
     - The only present in this folder should be `__init__.py`
 - Using a Linux command (SPECIFY OR NOT? FOR LEARNING PURPOSES), create a new python file within this folder called `my_talker.py`
-
-
-~~- POSSIBLE NEED TO RUN `chmod +x my_talker.py` TO MAKE IT EXECUTABLE (I don't yet know if this is necessary). It should now be green~~- Unnecessary
-
-
 - After that, go back to the source folder of your workspace, and then open Visual Studio Code
 - Find the new Python file that you just created and open it
 
     > At this point it is optional if you would like to install the Visual Studio ROS extension to aid in ROS2 development. If you would like to, click the extensions tab and search for ***"ROS"***, and install the one at the top that is verified by Microsoft
 
-- At the top of the file we need to make sure that we `import rclpy` if we want to use it to create a ROS2 node with python
+- At the top of the file we need to make sure that we `import rclpy`, and `from rclpy.node import Node` if we want to use it to create a ROS2 node with python
 - The next step is to create a `main` function with one parameter `args` that has a default value of `None`. Next, create a condition checking `if __name__ == '__main__'`. If it is true, call the main function. 
     - This is helpful for when we want to directly execute the file from the terminal
 - The first thing to do in the main function is to initialize ROS2 communications. To do this, we need to call the `init` method from the package `rclpy` and pass `(args=args)`. This will be the first line in your main function, and `rclpy.shutdown()` will be the last
@@ -105,6 +100,7 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 
 # Make it Cooler
 - Once you have successfully run your ROS2 node, you may have noticed that it stops right after you run it. To change it and make the node never stop until you kill it with Ctrl+C, open up Visual Studio Code and navigate back to your python file
+- Import `from std_msgs.msg import String`
 - Update your `main()` function to contain the line: `rclpy.spin(node)` after you create your node so that it does not stop running. Make sure to save your file
 - Next, we want to be able to run our node with a ROS2 command
 - In Visual Studio Code, open `setup.py` and find the `entry_points=` argument
