@@ -21,13 +21,13 @@ RUN . /opt/ros/humble/setup.sh
 #       Use 'source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash' to enable colcon autocomplete
 RUN sudo apt-get install python3-colcon-common-extensions -y
 
-# Install Gazebo-Garden (The most recent version of Gazebo)
+# Install Gazebo-Harmonic (The most recent version of Gazebo)
 RUN sudo apt-get update -y
 RUN sudo apt-get install lsb-release wget gnupg -y
 
 RUN sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 RUN sudo apt-get update -y
-RUN sudo apt-get install gz-garden -y
+RUN sudo apt-get install gz-harmonic -y
 
 ### Make a bash file and make the docker much easier to work with
