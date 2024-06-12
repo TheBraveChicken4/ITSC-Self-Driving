@@ -11,5 +11,8 @@ Gazebo is one of the mainstream robotics simulation softwares that is used to te
     - You can also find the completed SDF file in this git repository
 - Next you can follow the next step in the [tutorial](https://gazebosim.org/docs/harmonic/moving_robot) by clicking `Moving The Robot` on the left hand side
 
-![Base Robot Gazebo Sim](/LimoDocker/Gazebo_Assignment/GZSIM_Robot.png)
 
+- By the end of this tutorial, your robot should look just like the one in the picture GZSIM_Robot.png
+
+## **Extra Credit**
+- If you would like to recieve extra credit for this assignment, you can navigate to [this tutorial](https://gazebosim.org/docs/harmonic/fuel_insert) and follow along there. If you can import and control one of these robots successfully and show it to your TA, you will recieve _______

@@ -59,7 +59,7 @@
             </output>
         </plugin>            
         
-
+        <!--Necessary World Parameters-->
         <physics name="1ms" type="ignored">
             <max_step_size>0.001</max_step_size>
             <real_time_factor>1.0</real_time_factor>
@@ -116,6 +116,7 @@
                 </visual>
             </link>
         </model>
+        <!--Vehicle Description-->
         <model name='vehicle_blue' canonical_link='chassis'>
             <pose relative_to='world'>0 0 0 0 0 0</pose>
             <link name='chassis'>
