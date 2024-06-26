@@ -24,6 +24,10 @@ You should now see a Linux terminal where "the line " (FIX) says root@ and a com
         - Mac Studio (M1)
 
 
+# Important
+- Any subsequent attempt to run your docker container after having turned it off should use the command `dokcer exec -it name bash` In our case name would be `lab0_container`
+
+
 Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb088:
 - **You must have already installed XQuartz**
 - Start XQuartz by opening a terminal and typing `$ open -a XQuartz`
