@@ -26,6 +26,9 @@ You should now see a Linux terminal where "the line " (FIX) says root@ and a com
 
 # Important
 - Any subsequent attempt to run your docker container after having turned it off should use the command `dokcer exec -it name bash` In our case name would be `lab0_container`
+- You will also need to make sure that you have 
+    1. Docker desktop running and click the arrow to activate your container  
+    2. Make sure you have correctly launched either XQuartz or XLaunch to be able to have popout windows
 
 
 Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb088:
