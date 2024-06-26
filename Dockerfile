@@ -7,8 +7,8 @@
 FROM osrf/ros:humble-desktop-full
 
 # Upgrade and update the terminal
-RUN apt-get update -y
-RUN apt-get upgrade -y
+RUN apt update -y
+RUN apt upgrade -y
 
 # Install Gedit which is a useful text editor 
 RUN sudo apt install gedit -y
