@@ -1,17 +1,19 @@
 # Docker
 This project contains a docker file that is built to set up and build dependencies necessary for creating and running ros nodes.
+
 ## Instructions to get docker set up on Windows
 - First, open Docker Desktop and open a command line interface
-- Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/LimoDocker/main/Dockerfile` and press enter in the command line
+- Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/ITSC-Self-Driving/main/Dockerfile_Windows/Dockerfile` and press enter in the command line
 - This should build the image correctly and you should see it in the desktop under the images tab
 - Next, run the docker image by typing `docker run --name lab0_container -e DISPLAY=host.docker.internal:0.0 -it lab0_image`
 You should now see a Linux terminal where "the line " (FIX) says root@ and a combination of some numbers and letters
 - Start XLaunch and change **Display Number** to 0. Then press enter until the start window closes.
 - This means you have correctly launched your docker container and you can move on to the next step
 
+
 ## Instructions to get docker set up on Mac
 - First, open Docker Desktop and fresh a terminal
-- Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/LimoDocker/main/Dockerfile` and press enter
+- Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/ITSC-Self-Driving/main/Dockerfile_MacOS/Dockerfile` and press enter
 - This should build the image correctly and you should see it in the desktop under the images tab
     - This guide was tested on:
         - macOS Catalina 10.15.4
@@ -23,14 +25,6 @@ You should now see a Linux terminal where "the line " (FIX) says root@ and a com
         - XQuartz 2.8.4
         - Mac Studio (M1)
 
-
-# Important
-- Any subsequent attempt to run your docker container after having turned it off should use the command `dokcer exec -it name bash` In our case name would be `lab0_container`
-- You will also need to make sure that you have 
-    1. Docker desktop running and click the arrow to activate your container  
-    2. Make sure you have correctly launched either XQuartz or XLaunch to be able to have popout windows
-
-
 Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb088:
 - **You must have already installed XQuartz**
 - Start XQuartz by opening a terminal and typing `$ open -a XQuartz`
@@ -41,6 +35,13 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
     - :0 means the display is running on display port 0. It is important that it's not saying `–nolisten tcp` which would block any X11 forwarding to the X11 display.
 - Allow X11 forwarding via xhost `$ xhost +`
 - Now you should be able to open windows through your docker container. You can test this by running a container and typing `gedit` (Ensure gedit is installed)
+
+
+# Important
+- Any subsequent attempt to run your docker container after having turned it off should use the command `dokcer exec -it name bash` In our case name would be `lab0_container`
+- You will also need to make sure that you have 
+    1. Docker desktop running and click the arrow to activate your container  
+    2. Make sure you have correctly launched either XQuartz or XLaunch to be able to have popout windows
 
 
 # Build the ROS2 Workspace
