@@ -11,6 +11,9 @@ RUN apt-get update -y && apt-get install -y \
     wget \
     gnupg
 
+# Clean and update package cache
+RUN apt-get clean && apt-get update -y
+
 # Install Gedit
 RUN apt-get install -y gedit
 
