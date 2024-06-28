@@ -1,16 +1,12 @@
 # Start with a minimal Ubuntu base image
 FROM ubuntu:22.04
 
-RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
-RUN sed -i 's|security.debian.org|archive.debian.org/|g' /etc/apt/sources.list
-RUN sed -i '/stretch-updates/d' /etc/apt/sources.list
-
 # Upgrade and update the terminal
 RUN apt update -y
 RUN apt upgrade -y
 
 # Install Gedit which is a useful text editor 
-RUN sudo apt install gedit -y
+RUN apt-get install gedit -y
 
 # Make sure ROS2 is sourced. This is required to use ROS2 at all. 
 RUN . /opt/ros/humble/setup.sh
