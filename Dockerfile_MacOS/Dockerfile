@@ -5,23 +5,26 @@
 # Start the docker with a pre-made baseline for ROS2 humble development
 FROM osrf/ros:humble-desktop-full
 
-# Upgrade and update the terminal
-RUN apt-get update -y && apt-get upgrade -y
+# Install necessary packages and update/upgrade
+RUN apt-get update -y && apt-get install -y \
+    lsb-release \
+    wget \
+    gnupg
 
-# Install Gedit which is a useful text editor 
-RUN apt-get install gedit -y
+# Install Gedit
+RUN apt-get install -y gedit
 
-# Make sure ROS2 is sourced. This is required to use ROS2 at all. 
+# Source ROS2 setup
 RUN echo "source /opt/ros/humble/setup.sh" >> ~/.bashrc
 
-# Make sure Colcon is installed (this is the build package for ROS2 humble)
-RUN apt-get install python3-colcon-common-extensions -y
+# Install Colcon
+RUN apt-get install -y python3-colcon-common-extensions
 
-# Install Gazebo-Harmonic (The most recent version of Gazebo)
-RUN apt-get update -y && apt-get install lsb-release wget gnupg -y \
-    && wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg \
-    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null \
-    && apt-get update -y && apt-get upgrade -y && apt-get install -y gz-harmonic
+# Install Gazebo-Harmonic
+RUN wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null && \
+    apt-get update -y && apt-get install -y gz-harmonic
+
 
 
 
