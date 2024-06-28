@@ -1,36 +1,22 @@
-# Welcome to the official dockerfile for ITSC Let's Build It! @UNCC
-# The purpose of this file is to build a docker container ready to let 
-#   students create their own "talker" and "listener" nodes in ROS2 Humble
+# Start with a minimal Ubuntu base image
+FROM ubuntu:22.04
 
-# Start the docker with a pre-made baseline for ROS2 humble development
-FROM osrf/ros:humble-desktop-full
-
-# Debugging: Print environment info
-RUN uname -a
-RUN cat /etc/os-release
-
-# Install necessary packages and update/upgrade
+# Install basic packages
 RUN apt-get update -y && apt-get install -y \
     lsb-release \
     wget \
-    gnupg
+    gnupg \
+    gedit \
+    python3-colcon-common-extensions \
+    && apt-get clean
 
-# Clean and update package cache
-RUN apt-get clean && apt-get update -y
+# Add ROS2 setup
+RUN echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/ros2-latest.list \
+    && apt-get update -y && apt-get install -y ros-humble-desktop-full \
+    && apt-get clean
 
-# Debugging: Check available package info
-RUN apt-cache policy gedit
+# Set working directory
+WORKDIR /root
 
-# Install Gedit
-RUN apt-get install -y gedit
-
-# Source ROS2 setup
-RUN echo "source /opt/ros/humble/setup.sh" >> ~/.bashrc
-
-# Install Colcon
-RUN apt-get install -y python3-colcon-common-extensions
-
-# Install Gazebo-Harmonic
-RUN wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null && \
-    apt-get update -y && apt-get install -y gz-harmonic
+# Default command to keep the container running
+CMD ["bash"]
