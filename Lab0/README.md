@@ -36,6 +36,8 @@ Follow this tutorial https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb
 - Allow X11 forwarding via xhost `$ xhost +`
 - Now you should be able to open windows through your docker container. You can test this by running a container and typing `gedit` (Ensure gedit is installed)
 
+- To run the container type the command `docker run --name lab0_container -e DISPLAY=docker.for.mac.host.internal:0 -it ros_dev_image`
+
 
 # Important
 - Any subsequent attempt to run your docker container after having turned it off should use the command `dokcer exec -it name bash` In our case name would be `lab0_container`
