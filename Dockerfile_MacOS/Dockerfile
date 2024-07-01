@@ -10,12 +10,14 @@ RUN apt-get install gedit -y
 
 # Make sure Colcon in installed (this is the build package for ROS2 humble)
 #       Use 'source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash' to enable colcon autocomplete
-RUN apt-get install python3-colcon-common-extensions -y --fix-missing
+RUN apt update -y
+RUN apt-get -y install python3-colcon-common-extensions
 
 # Install Gazebo-Harmonic (The most recent version of Gazebo)
 RUN apt-get update -y
 RUN apt-get install lsb-release wget gnupg -y
 
+RUN apt-get update -y
 RUN wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 RUN apt-get update -y
