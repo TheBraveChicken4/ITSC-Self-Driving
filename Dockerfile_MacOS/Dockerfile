@@ -8,10 +8,6 @@ RUN apt upgrade -y
 # Install Gedit which is a useful text editor 
 RUN apt-get install gedit -y
 
-# Make sure ROS2 is sourced. This is required to use ROS2 at all. 
-RUN . /opt/ros/humble/setup.sh
-
-
 # Make sure Colcon in installed (this is the build package for ROS2 humble)
 #       Use 'source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash' to enable colcon autocomplete
 RUN apt-get install python3-colcon-common-extensions -y
