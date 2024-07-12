@@ -11,3 +11,11 @@ You may be asking yourself, how do these sensors communicate with the robot? If 
 
 
 Navigate to the Gazebo Harmonic [official tutorials](https://gazebosim.org/docs/harmonic/sensors) and follow the necessary steps to add an IMU (Inertial Measurement Unit) sensor, Contact sensor, and Lidar sensor.
+
+
+
+
+****************************************************
+You can find the final world of this tutorial showing all these plugins in use here. You may also find an extensive set of world examples with many possible sensors and actuation capabilities in
+
+*** IMPORTANT *** FINISH
