@@ -1,2 +1,3 @@
+# This will effectively ignore the virtual environment file that will go in week5
 venv/
 __pycache__/
