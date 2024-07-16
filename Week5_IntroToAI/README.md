@@ -9,3 +9,6 @@ In this section of the course, you will learn about some of these AI models and 
 
 # Implementation
 - There are many tools out there that have been created to make implementing code really easy. This is also known as inference (running a working model from the internet with your own data). for our first lesson, you will use the camera on your computer to create and object detection model using a pre-made model called [YOLOv8](https://github.com/ultralytics/ultralytics) that was created by a company called Utralytics.
+
+
+##################### ADD INSTRUCTIONS ON INSTALLING ULTRALYTICS #####################
