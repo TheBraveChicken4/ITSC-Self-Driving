@@ -2,7 +2,7 @@
 
 **Artificial Intelligence** is the field of computer science focused on creating systems capable of performing tasks that typically require human intelligence. This includes tasks such as learning, reasoning, problem-solving, perception, and understanding languages such as English or Spanish. AI enables machines to adapt to new inputs, make decisions, and improve their performance over time through experience and data.
 
-AI is extremely versatile and one of the areas that it has heavily affected is robotics. AI is everywhere you look in robotics. Industrial robots, service robots, medical robots and educational robots all rely heavily on artificial intelligence. Robotics uses AI in ways such as for perception, decision-making, and learning/adaptation. 
+AI is extremely versatile and one of the areas that it has heavily affected is robotics. AI is everywhere you look in robotics. Industrial robots, service robots, medical robots, educational robots and course self-driving cars all rely heavily on artificial intelligence. Robotics uses AI in ways such as for perception, decision-making, prediction, Natural Language Processing (NLP) learning/adaptation. 
 
 In this section of the course, you will learn about some of these AI models and how to implement them in robotics. 
 
