@@ -34,7 +34,7 @@ The goal of this course is to step away from the traditional lecture style class
 - ### Week 7 (Mapping):
 
 ## Project 3:
-- ...
+- Get the robot to move around corners autonomously
 
 
 ## Project 4:
