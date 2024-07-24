@@ -1,37 +1,48 @@
-# Use YOLOv8 to create a model that makes bounding boxes for things that a robot might need to watch out for. 
 from ultralytics import YOLO
 import cv2
-from ultralytics.utils.plotting import Annotator
+
+model = YOLO("yolov8n.pt")
+
+results = model.train(data="coco8.yaml", epochs=100, imgsz=640)
 
 
-model = YOLO('yolov8n.pt')
+'''
+@TODO OPTIMIZE THIS CODE WITH JUPYTER NOTEBOOK
+'''
 
-cap = cv2.VideoCapture(0)
-cap.set(3, 640)
-cap.set(4, 480)
+def main():
+    # Open a connection to the camera (0 is usually the default camera)
+    cap = cv2.VideoCapture(0)
 
-while True:
-    _, img = cap.read()
-    
-    # BGR to RGB conversion is performed under the hood
-    # see: https://github.com/ultralytics/ultralytics/issues/2575
-    results = model.predict(img)
+    if not cap.isOpened():
+        print("Error: Could not open video stream.")
+        return
 
-    for r in results:
-        
-        annotator = Annotator(img)
-        
-        boxes = r.boxes
-        for box in boxes:
-            
-            b = box.xyxy[0]  # get box coordinates in (left, top, right, bottom) format
-            c = box.cls
-            annotator.box_label(b, model.names[int(c)])
-          
-    img = annotator.result()  
-    cv2.imshow('YOLO V8 Detection', img)     
-    if cv2.waitKey(1) & 0xFF == ord(' '):
-        break
+    while True:
+        # Capture frame-by-frame
+        ret, frame = cap.read()
 
-cap.release()
-cv2.destroyAllWindows()
+        if not ret:
+            print("Error: Could not read frame.")
+            break
+
+        # Perform object detection
+        results = model(frame)
+        print(results)
+
+        # Draw the results on the frame
+        frame = results[0].plot()
+
+        # Display the resulting frame
+        cv2.imshow('Video Stream', frame)
+
+        # Break the loop on 'q' key press
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    # When everything is done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
