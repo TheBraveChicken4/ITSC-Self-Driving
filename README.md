@@ -26,16 +26,29 @@ The goal of this course is to step away from the traditional lecture style class
 
 
 ## Project 2:
-- Get a robot to move in a stright line and stop at a certain distance while avoiding obstacles
+- Get a robot to move in a stright line and stop at a certain distance ***while avoiding obstacles***
 - ### Week 5 (Intro To AI):
-- 
+- AI will be crucial for object detected and classification if we would like the robot to be able to stop when it comes close to them. AI can also be used to re-route the path when there is an obstruction in the way as well.
 - ### Week 6 (Navigation):
-- 
+- Navigation will build onto the path planning laid out by Artificial Intelligence. This is essential to get right if you would like to be able to achieve a variable drive path.
 - ### Week 7 (Mapping):
-
+- Mapping will be very important for being able to detect the distance to an object. Though AI can see and classify an object, being able to make different decisions based on how close those objects are will be a result of mapping.
 ## Project 3:
-- Get the robot to move around corners autonomously
-
+- Get the robot to move around corners autonomously and adhere to stop signs.
+- ### Week 8 (Midtwerm):
+- The midterm will be important to reinforce the skills and knowledge collected so far throughout the course. Every week builds upon the last, so it is crucial not to fall too far behind in terms of understanding and content. The midterm will help mitigate any abscence of knowledge. 
+- ### Week 9 (AdvancedAI):
+- Advanced AI will be used to make decisions based on sensor feedback to be able to imrpove safety and functionality. Combining every sensor component and using Machine Learning to come up with a decision maker is crucial for the development of self-driving vehicles. 
+- ### Week 10 (Integrating AI / Robotics):
+- In this week we will have create tangible outcomes given the results of these machine learning processes. This is very important to continue development and recieve results of the work that students have been putting in.
+- ### Week 11 (Advanced Topics):
+-
 
 ## Project 4:
-- ...
+- ### Week 12 (Collaborative Project):
+- The collaborative project will be .....
+- ### Week 13 (Fine Tuning):
+- Self-driving vehicles require a very high level of safety and accuracy to be viable to put on the roads. Though students may have a working product at this stage, fine tuning is necessary to imrpove the safety and usability of the product that they are building.
+- ### Week 14 (Final Preparation):
+- 
+- ###
