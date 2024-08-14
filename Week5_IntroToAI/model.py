@@ -21,7 +21,7 @@ def main():
 
 
         # Perform object detection
-        results = model.predict(frame)
+        results = model.predict(source=frame)
         print(results)
 
         # Draw the results on the frame
