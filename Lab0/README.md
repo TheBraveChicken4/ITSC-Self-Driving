@@ -12,7 +12,7 @@ You should now see a Linux terminal where "the line " (FIX) says root@ and a com
 
 
 ## Instructions to get docker set up on Mac
-- First, open Docker Desktop and fresh a terminal
+- First, open Docker Desktop and a fresh terminal
 - Next, type: `docker build -t lab0_image https://raw.githubusercontent.com/TheBraveChicken4/ITSC-Self-Driving/main/Dockerfile_MacOS/Dockerfile` and press enter (NOTE: If you recieve a permission denied error, you may need to rerun the line above preceeded with the `sudo` command)
 - This should build the image correctly and you should see it in the desktop under the images tab
     - This guide was tested on:
