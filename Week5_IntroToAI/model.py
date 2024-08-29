@@ -1,9 +1,7 @@
 from ultralytics import YOLO
 import cv2
 
-model = YOLO("yolov8n.pt")
-
-results = model.train(data="coco8.yaml", epochs=100, imgsz=640)
+model = YOLO("yolov8m.pt")
 
 
 '''
@@ -28,7 +26,6 @@ def main():
 
         # Perform object detection
         results = model(frame)
-        print(results)
 
         # Draw the results on the frame
         frame = results[0].plot()
