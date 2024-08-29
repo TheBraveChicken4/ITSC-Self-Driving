@@ -1,7 +1,9 @@
 from ultralytics import YOLO
 import cv2
 
-model = YOLO("yolov8m.pt")
+model = YOLO("yolov8n.pt")
+
+results = model.train(data="coco8.yaml", epochs=100, imgsz=640)
 
 
 '''
@@ -24,11 +26,13 @@ def main():
             print("Error: Could not read frame.")
             break
 
+
         # Perform object detection
         results = model(frame)
+        print(results)
 
         # Draw the results on the frame
-        frame = results[0].plot()
+        frame = results[0].plot()  # Assuming the results object has a plot method
 
         # Display the resulting frame
         cv2.imshow('Video Stream', frame)
